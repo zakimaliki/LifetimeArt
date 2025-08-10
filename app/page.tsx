@@ -568,37 +568,37 @@ const serviceList = [
     title: 'Kitchens',
     icon: <img src="/Kitchens Logo.png" alt="Kitchen Logo" className="w-7 h-7 object-contain inline-block" />,
     image: '/Kitchen.png',
-    desc: 'At LifetimeArt, we design and build stunning kitchens tailored to your style and needs. Whether you’re after a sleek modern space or a classic, timeless look, our expert team delivers high-quality craftsmanship, functionality, and attention to detail to create the heart of your home.'
+    desc: 'At LifetimeArt, we design and build stunning kitchens tailored to your style and needs. Whether you prefer sleek modern lines or a timeless, classic look, our team delivers premium craftsmanship, functional layouts, and meticulous attention to detail—creating a kitchen you’ll love to cook and gather in.'
   },
   {
     title: 'Loft Conversions',
     icon: <img src="/Loft Conversions Logo.png" alt="Loft Logo" className="w-7 h-7 object-contain inline-block" />,
     image: '/Loft Conversions.png',
-    desc: 'Transform your unused attic into a beautiful, functional living space. Our loft conversion services maximize your home’s potential, adding value and comfort with expert planning and execution.'
+    desc: 'Transform unused loft space into a beautiful, practical part of your home. From cozy bedrooms to bright home offices, we handle everything from structural adjustments to finishing touches, ensuring your new space is safe, stylish, and seamlessly integrated with your existing home.'
   },
   {
     title: 'Bathrooms',
     icon: <img src="/Bathrooms Logo.png" alt="Bathroom Logo" className="w-7 h-7 object-contain inline-block" />,
     image: '/Bathroom.png',
-    desc: 'Upgrade your bathroom with our bespoke renovation services. We create luxurious, relaxing spaces with modern amenities and elegant finishes, tailored to your preferences and lifestyle.'
+    desc: 'We create bathrooms that balance relaxation and practicality, with designs ranging from spa-inspired retreats to minimalist, functional spaces. Our team sources high-quality fixtures and finishes, ensuring durability, elegance, and comfort for years to come.'
   },
   {
     title: 'Extensions',
     icon: <img src="/Extensions Logo.png" alt="Extension Logo" className="w-7 h-7 object-contain inline-block" />,
     image: '/Extension.png',
-    desc: 'Expand your living space with a custom extension. From design to build, we handle every aspect to ensure seamless integration with your existing home and a result that exceeds expectations.'
+    desc: 'Expand your living space without compromising on style. Whether it’s a kitchen extension, a new family room, or an entire additional floor, we work closely with you to design and build an extension that complements your home and adds value.'
   },
   {
     title: 'Restorations',
     icon: <img src="/Restorations Logo.png" alt="Restoration Logo" className="w-7 h-7 object-contain inline-block" />,
     image: '/Restoration.png',
-    desc: 'Preserve the charm and character of your property with our expert restoration services. We combine traditional techniques with modern solutions to revitalize and protect your home.'
+    desc: 'Preserve the charm of your property while upgrading it for modern living. Our restoration work combines traditional craftsmanship with modern techniques to breathe new life into historic or worn-down spaces.'
   },
   {
     title: 'External Works',
     icon: <img src="/External Works Logo.png" alt="External Works Logo" className="w-7 h-7 object-contain inline-block" />,
     image: '/External Works.png',
-    desc: 'Enhance your home’s exterior with our comprehensive external works, including landscaping, driveways, patios, and more. We create beautiful, functional outdoor spaces to complement your lifestyle.'
+    desc: 'Enhance the beauty and functionality of your outdoor areas. From garden landscaping to patios, pathways, and exterior lighting, we create inviting spaces that connect your home to nature.'
   },
 ];
 
@@ -732,31 +732,31 @@ function FAQsAccordion() {
   const faqs = [
     {
       q: 'What area are you based in?',
-      a: 'We primarily serve London and surrounding areas, but depending on the project, we may be able to travel further. Get in touch to discuss your location and project needs.'
+      a: 'We primarily serve London and the surrounding areas, but depending on the project, we can travel further. Contact us to discuss your location and requirements.'
     },
     {
       q: 'How long does a typical project take?',
-      a: 'Project duration varies depending on the scope and complexity. Most projects are completed within a few weeks to a few months. We provide a detailed timeline during the consultation.'
+      a: 'Project timelines vary depending on size and complexity. We’ll provide an estimated schedule during your consultation and keep you updated throughout the process.'
     },
     {
       q: 'Do you offer free quotes?',
-      a: 'Yes, we offer free, no-obligation quotes for all projects. Contact us to arrange a consultation.'
+      a: 'Yes, we offer free, no-obligation quotes. Our team will visit your property, assess your needs, and provide a detailed breakdown.'
     },
     {
       q: 'Will I need planning permission for my project?',
-      a: 'Some projects may require planning permission. We can advise you on the requirements and assist with the application process if needed.'
+      a: 'This depends on the type and scope of your project. We can guide you through local regulations and help with applications if needed.'
     },
     {
       q: 'Do you provide a guarantee for your work?',
-      a: 'Yes, all our work is covered by a comprehensive guarantee for your peace of mind.'
+      a: 'Absolutely. All of our work is backed by a guarantee for quality and durability, giving you peace of mind.'
     },
     {
       q: 'Can I stay in my home while the work is being done?',
-      a: 'In many cases, yes. We strive to minimize disruption and keep your home as comfortable as possible during the project.'
+      a: 'In most cases, yes—though it may depend on the scope of work and areas affected. We’ll discuss options to minimise disruption.'
     },
     {
       q: 'How do I get started with a project?',
-      a: 'Simply contact us to arrange a consultation. We’ll discuss your needs, provide a quote, and guide you through the next steps.'
+      a: 'Simply get in touch with our team. We’ll arrange a consultation, discuss your ideas, and prepare a tailored plan and quote.'
     },
   ];
   const [openIdx, setOpenIdx] = React.useState(0);
