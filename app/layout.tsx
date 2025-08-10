@@ -34,6 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/Logo.png" type="image/png" />
         <style>{`
 html {
   font-family: ${GeistSans.style.fontFamily};
