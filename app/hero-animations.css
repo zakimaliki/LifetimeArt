@@ -1,0 +1,140 @@
+/* Animations for hero section and navigation */
+@layer utilities {
+    .fade-in {
+        opacity: 0;
+        transform: translateY(24px);
+        animation: fadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .fade-in-top {
+        opacity: 0;
+        transform: translateY(-24px);
+        animation: fadeInTop 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .fade-in-scale {
+        opacity: 0;
+        transform: scale(0.96);
+        animation: fadeInScale 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .pop-in {
+        opacity: 0;
+        transform: scale(0.92);
+        animation: popIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+    }
+
+    .slide-in-br {
+        opacity: 0;
+        transform: translate(32px, 32px);
+        animation: slideInBR 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+    }
+
+    .parallax {
+        will-change: transform;
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInTop {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInScale {
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes popIn {
+        60% {
+            opacity: 1;
+            transform: scale(1.08);
+        }
+
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes slideInBR {
+        to {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+    }
+
+    .underline-anim {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .underline-anim::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2px;
+        background: currentColor;
+        transform: scaleX(0);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-origin: left;
+    }
+
+    .underline-anim:hover::after {
+        transform: scaleX(1);
+    }
+
+    .btn-lift {
+        transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
+    }
+
+    .btn-lift:hover {
+        transform: translateY(-4px) scale(1.03);
+        box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.08);
+    }
+
+    .arrow-slide {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn-lift:hover .arrow-slide {
+        transform: translateX(8px);
+    }
+
+    /* Ticker and stats fade-in animation */
+    .fade-ticker-img {
+        opacity: 0;
+        transform: translateX(-32px);
+        transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes fadeInTicker {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .fade-in-stat {
+        opacity: 0;
+        transform: translateY(32px);
+    }
+
+    /* Already handled by inline style for staggered fade-in */
+
+    .ticker-track {
+        will-change: transform;
+    }
+}

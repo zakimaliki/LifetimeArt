@@ -1,0 +1,793 @@
+'use client'
+
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Star, ArrowRight } from "lucide-react"
+import "@/app/hero-animations.css"
+import * as React from "react"
+
+export default function Component() {
+  const heroImgRef = React.useRef<HTMLImageElement>(null)
+  const [mobileNavOpen, setMobileNavOpen] = React.useState(false)
+  const [selected, setSelected] = React.useState(0);
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const img = heroImgRef.current
+      if (!img) return
+      const rect = img.getBoundingClientRect()
+      const windowH = window.innerHeight
+      if (rect.top < windowH && rect.bottom > 0) {
+        const percent = (windowH - rect.top) / (windowH + rect.height)
+        img.style.transform = `scale(1.04) translateY(${percent * 16}px)`
+      }
+      const navbar = document.getElementById('main-navbar')
+      if (navbar) {
+        if (window.scrollY > 10) {
+          navbar.style.background = 'rgba(16,16,20,0.98)'
+        } else {
+          navbar.style.background = 'rgba(16,16,20,0.0)'
+        }
+      }
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  return (
+    <div className="min-h-screen bg-[#101014] text-white">
+      <nav className="fixed top-0 w-full z-50 fade-in-top transition-colors duration-1000"
+        style={{ background: 'rgba(16,16,20,0.0)' }}
+        id="main-navbar"
+      >
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3 fade-in-top" style={{ animationDelay: '0.1s' }}>
+              <button
+                type="button"
+                onClick={() => {
+                  const hero = document.getElementById('hero');
+                  if (hero) hero.scrollIntoView({ behavior: 'smooth' });
+                }}
+                tabIndex={0}
+                aria-label="Home logo"
+                className="focus:outline-none bg-transparent border-0 p-0 m-0 cursor-pointer flex items-center gap-2"
+              >
+                <img src="/Logo.png" alt="LifetimeArt Logo" className="w-8 h-8 inline-block align-middle" />
+                <span className="text-2xl font-light align-middle">LifetimeArt</span>
+              </button>
+            </div>
+            <div className="hidden md:flex items-center space-x-12 fade-in-top" style={{ animationDelay: '0.2s' }}>
+              <a href="#about" className="text-white hover:text-[#e9ecf2] underline-anim font-medium">About</a>
+              <a href="#services" className="text-white hover:text-[#e9ecf2] underline-anim font-medium">Services</a>
+              <a href="#our-work" className="text-white hover:text-[#e9ecf2] underline-anim font-medium">Our work</a>
+              <a href="#testimonials" className="text-white hover:text-[#e9ecf2] underline-anim font-medium">Testimonials</a>
+              <a href="#faqs" className="text-white hover:text-[#e9ecf2] underline-anim font-medium">FAQs</a>
+              <a href="#contact" className="text-white hover:text-[#e9ecf2] underline-anim font-medium">Contact</a>
+            </div>
+            <button
+              className="md:hidden flex flex-col items-center justify-center w-10 h-10 rounded focus:outline-none focus:ring-2 focus:ring-white relative group"
+              aria-label={mobileNavOpen ? 'Close menu' : 'Open menu'}
+              onClick={() => setMobileNavOpen((v) => !v)}
+              style={{ animationDelay: '0.5s' }}
+            >
+              <span
+                className={`block absolute left-2 right-2 h-0.5 bg-white rounded transition-all duration-500 ${mobileNavOpen ? 'rotate-45 top-5' : 'top-3'}`}
+              ></span>
+              <span
+                className={`block absolute left-2 right-2 h-0.5 bg-white rounded transition-all duration-500 ${mobileNavOpen ? 'opacity-0' : 'top-5'}`}
+              ></span>
+              <span
+                className={`block absolute left-2 right-2 h-0.5 bg-white rounded transition-all duration-500 ${mobileNavOpen ? '-rotate-45 top-5' : 'top-7'}`}
+              ></span>
+              <span className="sr-only">{mobileNavOpen ? 'Close' : 'Open'} menu</span>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <section id="hero" className="pt-24 bg-[#101014] text-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 pb-24">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="inline-flex items-center gap-2 bg-[#23232a] text-white text-xs font-semibold px-3 py-1 rounded-full shadow pop-in mb-6" style={{ animationDelay: '0.3s' }}>
+                <span className="inline-block w-2 h-2 bg-[#bfc2c9] rounded-full"></span>
+                Available for work
+              </span>
+              <h1 className="text-6xl lg:text-5xl font-extrabold mb-6 leading-tight fade-in" style={{ animationDelay: '0.4s' }}>
+                Your trusted partner<br />for quality home<br />improvement
+              </h1>
+              <p className="text-lg lg:text-2xl text-[#bfc2c9] mb-10 leading-relaxed fade-in" style={{ animationDelay: '0.5s' }}>
+                LifetimeArt delivers expert home improvements, creating beautiful and functional spaces with quality craftsmanship.
+              </p>
+              <div className="flex gap-4 fade-in" style={{ animationDelay: '0.6s' }}>
+                <Button size="lg" className="bg-[#23232a] text-white hover:bg-[#23232a]/80 btn-lift font-semibold px-8 py-4 text-lg shadow-lg flex items-center gap-2">
+                  Work with us <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </div>
+            </div>
+            <div className="relative flex items-center justify-center">
+              <Image
+                ref={heroImgRef}
+                src="/hero-image.png"
+                alt="Hero"
+                width={480}
+                height={600}
+                className="rounded-2xl object-cover fade-in-scale parallax shadow-2xl border-4 border-white/10"
+                style={{ animationDelay: '0.7s' }}
+                priority
+              />
+              <Card className="absolute bottom-8 right-8 w-80 bg-[#101014]/30 text-white shadow-2xl slide-in-br rounded-xl border-0 backdrop-blur-sm" style={{ animationDelay: '0.9s' }}>
+                <CardContent className="p-5">
+                  <div className="flex mb-2">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-base mb-3 font-medium">“LifetimeArt has been a game-changer for my home. Their ability to blend functionality with exquisite design is unparalleled.”</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" className="bg-[#fafafa] py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-16 items-center py-25">
+            <div>
+              <Badge className="mb-4 bg-[#23232a] text-white">About us</Badge>
+              <h2 className="text-4xl font-bold text-[#23232a] mb-6 leading-tight">Home<br />Improvement<br />Specialists</h2>
+            </div>
+            <div>
+              <p className="text-md text-[#3d3d47] mb-10 leading-relaxed">
+                Welcome to LifetimeArt, your trusted home improvement experts, dedicated to transforming homes with precision and care. With years of experience in building kitchens, bathrooms, garages, and more, we take pride in delivering top-quality craftsmanship and a seamless customer experience. Our mission is to bring your vision to life while ensuring clear communication and expert guidance at every step. Let’s create a home you’ll love!
+              </p>
+            </div>
+          </div>
+          <ImageTicker />
+          <StatsRow />
+        </div>
+      </section>
+
+      <section id="services" className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <Badge className="mb-4 bg-[#23232a] text-white">Services</Badge>
+            <h2 className="text-4xl font-bold text-[#23232a] mb-4">What we do</h2>
+            <p className="text-[#3d3d47]">Find out which one of our services fit the needs of your project</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            <div className="flex justify-center">
+              <ServiceImage image={serviceList[selected].image} />
+            </div>
+            <div>
+              <div className="space-y-2">
+                {serviceList.map((service, idx) => (
+                  <div key={service.title} className="border-b last:border-b-0 border-[#ececec]">
+                    <button
+                      className="w-full flex items-center justify-between py-5 px-2 text-left group focus:outline-none"
+                      onClick={() => setSelected(idx)}
+                      aria-expanded={selected === idx}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="text-2xl">{service.icon}</span>
+                        <span className="font-medium text-lg text-[#23232a]">{service.title}</span>
+                      </div>
+                      <span className="text-xl transition-transform duration-200">
+                        {selected === idx ? (
+                          <span onClick={e => { e.stopPropagation(); setSelected(-1); }} className="cursor-pointer">×</span>
+                        ) : (
+                          <span>+</span>
+                        )}
+                      </span>
+                    </button>
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ${selected === idx ? 'max-h-40 opacity-100 py-2' : 'max-h-0 opacity-0 py-0'}`}
+                      aria-hidden={selected !== idx}
+                    >
+                      <p className="text-[#3d3d47] text-sm px-10 pb-4">{service.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="our-work" className="py-20 bg-[#ffffff] text-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-[#23232a] text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">Our work</span>
+            <h2 className="text-4xl font-bold mb-4 text-[#101014]">Get inspired by our work</h2>
+            <p className="text-[#101014] max-w-2xl mx-auto">See how we’ve transformed homes with our expert
+              craftsmanship and attention to detail.</p>
+          </div>
+
+          <div className="space-y-16">
+            <div className="bg-[#e9ecf2] text-[#101014] rounded-2xl mb-40 shadow-lg flex flex-col md:flex-row overflow-hidden">
+              <div className="md:w-1/3 flex items-center justify-center p-6">
+                <img src="/Modern kitchen refit.png" alt="Modern kitchen refit" className="rounded-xl w-full h-auto object-cover" />
+              </div>
+              <div className="md:w-2/3 p-8 flex flex-col justify-center">
+                <h3 className="text-2xl font-bold mb-2">Modern kitchen refit</h3>
+                <p className="mb-4 text-xl">This kitchen transformation brought sleek, modern design and enhanced  functionality to our client’s home. We installed custom cabinetry, high-quality worktops, and state-of-the-art appliances, creating a stylish yet practical space perfect for cooking and entertaining. With attention to every detail, we delivered a kitchen that balances aesthetics and usability.</p>
+                <div className="flex gap-2 mb-4">
+                  <span className="bg-[#23232a] text-white text-xs px-3 py-1 rounded-full">Kitchen</span>
+                  <span className="bg-[#23232a] text-white text-xs px-3 py-1 rounded-full">Wooden</span>
+                </div>
+                <div className="flex items-start gap-4">
+                  <span className="text-2xl">“</span>
+                  <div>
+                    <p className="mb-2 text-base font-medium text-xl">LifetimeArt completely transformed our kitchen, making it both beautiful and highly functional. The craftsmanship was outstanding, and the team was professional and communicative throughout. We couldn't be happier with the result!</p>
+                    <div className="flex items-center gap-2 mt-2">
+                      <img src="/Rachel Morgan.png" alt="Rachel Morgan" className="w-8 h-8 rounded-full object-cover" />
+                      <span className="text-sm font-semibold">Rachel Morgan</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-[#23232a] text-white rounded-2xl my-40 shadow-lg flex flex-col md:flex-row overflow-hidden">
+              <div className="md:w-1/3 flex items-center justify-center p-6">
+                <img src="/External garden path build.png" alt="External garden path build" className="rounded-xl w-full h-auto object-cover" />
+              </div>
+              <div className="md:w-2/3 p-8 flex flex-col justify-center">
+                <h3 className="text-2xl font-bold mb-2">External garden path build</h3>
+                <p className="mb-4 text-xl">Our team designed and built a durable, visually appealing garden path to enhance the outdoor space. Using premium materials, we created a seamless walkway that blends naturally with the landscape, providing both functionality and aesthetic charm. The result is a stylish, well-crafted path
+                  that elevates the overall garden design.</p>
+                <div className="flex gap-2 mb-4">
+                  <span className="bg-[#101014] text-white text-xs px-3 py-1 rounded-full">External Works</span>
+                  <span className="bg-[#101014] text-white text-xs px-3 py-1 rounded-full">Walkway</span>
+                </div>
+                <div className="flex items-start gap-4">
+                  <span className="text-2xl">“</span>
+                  <div>
+                    <p className="mb-2 text-base font-medium text-xl">The team at LifetimeArt did an amazing job on our garden path. It's sturdy, looks fantastic, and has completely transformed our outdoor space. They listened to our vision and delivered exactly what we wanted - highly recommended!</p>
+                    <div className="flex items-center gap-2 mt-2">
+                      <img src="/Michael Turner.png" alt="Michael Turner" className="w-8 h-8 rounded-full object-cover" />
+                      <span className="text-sm font-semibold">Michael Turner</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-[#e9ecf2] text-[#101014] rounded-2xl mt-40 mb-20 shadow-lg flex flex-col md:flex-row overflow-hidden">
+              <div className="md:w-1/3 flex items-center justify-center p-6">
+                <img src="/Bathroom renovation.png" alt="Bathroom renovation" className="rounded-xl w-full h-auto object-cover" />
+              </div>
+              <div className="md:w-2/3 p-8 flex flex-col justify-center">
+                <h3 className="text-2xl font-bold mb-2">Bathroom renovation</h3>
+                <p className="mb-4 text-xl">We revitalized this bathroom with a fresh, modern design, incorporating high-end tiling, sleek fixtures, and efficient lighting. The layout was optimized to maximize space, creating a luxurious and relaxing atmosphere. The final result is a beautifully crafted bathroom that enhances both
+                  comfort and functionality.</p>
+                <div className="flex gap-2 mb-4">
+                  <span className="bg-[#23232a] text-white text-xs px-3 py-1 rounded-full">Kitchen</span>
+                  <span className="bg-[#23232a] text-white text-xs px-3 py-1 rounded-full">Wooden</span>
+                </div>
+                <div className="flex items-start gap-4">
+                  <span className="text-2xl">“</span>
+                  <div>
+                    <p className="mb-2 text-base font-medium text-xl">LifetimeArt completely transformed our kitchen, making it both beautiful and highly functional. The craftsmanship was outstanding, and the team was professional and communicative throughout. We couldn't be happier with the result!</p>
+                    <div className="flex items-center gap-2 mt-2">
+                      <img src="/Laura Davies.png" alt="Laura Davies" className="w-8 h-8 rounded-full object-cover" />
+                      <span className="text-sm font-semibold">Laura Davies</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-[#fafafa]" id="testimonials">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-[#23232a] text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">Testimonials</span>
+            <h2 className="text-4xl font-bold text-[#101014] mb-4">Hear from our clients</h2>
+            <p className="text-[#3d3d47] max-w-2xl mx-auto">Hear from our happy clients about their experience working with Refit and the quality of our craftsmanship.</p>
+          </div>
+
+          <TestimonialsCarousel />
+        </div>
+      </section>
+
+
+      <section id="faqs" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row gap-16 items-start">
+          <div className="md:w-1/3 mb-10 md:mb-0">
+            <span className="inline-block bg-[#23232a] text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">FAQs</span>
+            <h2 className="text-4xl font-bold text-[#101014] mb-6 leading-tight">Answering Your<br />Questions</h2>
+            <p className="text-[#3d3d47] mb-8">Got more questions? Send us your enquiry below</p>
+            <a href="#contact" className="inline-flex items-center gap-2 bg-[#f4f4f4] text-[#101014] font-semibold px-6 py-3 rounded-full shadow hover:bg-[#ececec] transition">
+              Get in touch
+              <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#101014] text-white ml-2">
+                <svg width="18" height="18" fill="none" viewBox="0 0 18 18"><path d="M5 13l6-6M11 13V7H5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </span>
+            </a>
+          </div>
+          <div className="md:w-2/3 w-full">
+            <FAQsAccordion />
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="py-20 bg-[#101014] text-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16">
+            <div>
+              <h2 className="text-4xl font-bold mb-6">Get in Touch</h2>
+              <p className="text-[#d0d1db] text-lg mb-8">
+                For any inquiries or to explore your vision further, we invite  you to contact our professional team using the details provided below.
+              </p>
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div>
+                    <div className="font-semibold">Office</div>
+                    <div className="text-[#d0d1db]">150 Old Park Ln, London W1K 1QZ</div>
+
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div>
+                    <div className="font-semibold">Email</div>
+                    <div className="text-[#d0d1db]">hello@refit.com</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div>
+                    <div className="font-semibold">Telephone</div>
+                    <div className="text-[#d0d1db]">+07716 534984</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div>
+                    <div className="font-semibold">Follow us</div>
+                    <div className="flex flex-row gap-4 mt-2">
+                      <img src="/Instagram.png" alt="Instagram" className="w-7 h-7 object-contain" />
+                      <img src="/Tiktok.png" alt="Tiktok" className="w-7 h-7 object-contain" />
+                      <img src="/Twitter png.png" alt="Twitter" className="w-7 h-7 object-contain" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <Card className="p-8">
+              <h3 className="text-2xl font-bold text-[#101014] mb-6">Send us a message</h3>
+              <form className="space-y-6" autoComplete="off">
+                <div>
+                  <label className="block text-sm font-medium text-[#3d3d47] mb-2">Name<span className="text-red-500">*</span></label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-3 border border-[#e6e6e6] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#006ae6] bg-[#fafafa] text-[#101014] placeholder-[#bdbdbd]"
+                    placeholder="John Smith"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-[#3d3d47] mb-2">Email<span className="text-red-500">*</span></label>
+                  <input
+                    type="email"
+                    className="w-full px-4 py-3 border border-[#e6e6e6] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#006ae6] bg-[#fafafa] text-[#101014] placeholder-[#bdbdbd]"
+                    placeholder="johnsmith@gmail.com"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-[#3d3d47] mb-2">Phone Number</label>
+                  <input
+                    type="tel"
+                    className="w-full px-4 py-3 border border-[#e6e6e6] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#006ae6] bg-[#fafafa] text-[#101014] placeholder-[#bdbdbd]"
+                    placeholder="+44789 123456"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-[#3d3d47] mb-2">Message<span className="text-red-500">*</span></label>
+                  <textarea
+                    rows={4}
+                    className="w-full px-4 py-3 border border-[#e6e6e6] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#006ae6] bg-[#fafafa] text-[#101014] placeholder-[#bdbdbd]"
+                    placeholder="Hello, I'd like to enquire about..."
+                    required
+                  ></textarea>
+                </div>
+                <button type="submit" className="w-full bg-[#3d3d47] text-white py-3 rounded-lg font-medium text-lg hover:bg-[#23232a] transition">Send message</button>
+              </form>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-[#18181b] text-white pt-16 pb-8 rounded-b-2xl">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-12 mb-8">
+            <div className="flex items-center gap-3 mb-4 md:mb-0">
+              <img src="/Logo.png" alt="LifetimeArt Logo" className="w-8 h-8" />
+              <span className="text-2xl font-light">LifetimeArt</span>
+            </div>
+            <div>
+              <div className="text-xl font-normal mb-4">Quick links</div>
+              <div className="grid grid-cols-2 gap-x-12 gap-y-2 text-[#d0d1db]">
+                <a href="#about" className="hover:text-white">About us</a>
+                <a href="#testimonials" className="hover:text-white">Testimonials</a>
+                <a href="#our-work" className="hover:text-white">Our work</a>
+                <a href="#faqs" className="hover:text-white">FAQs</a>
+                <a href="#services" className="hover:text-white">Services</a>
+                <a href="#contact" className="hover:text-white">Contact</a>
+              </div>
+            </div>
+          </div>
+          <hr className="border-[#23232a] mb-6" />
+          <div className="text-[#d0d1db] text-base pl-2">© 2025 LifetimeArt. All rights reserved.</div>
+        </div>
+      </footer>
+
+      {mobileNavOpen && (
+        <div className="fixed inset-0 z-[100] bg-[#101014]/90 backdrop-blur-sm flex flex-col transition-all duration-500 ease-in-out">
+          <div className="flex items-center justify-between px-6 py-6">
+            <img src="/Logo.png" alt="LifetimeArt Logo" className="h-9 w-auto" />
+            <button
+              className="w-10 h-10 flex items-center justify-center text-white"
+              aria-label="Close menu"
+              onClick={() => setMobileNavOpen(false)}
+            >
+              <span className="sr-only">Close</span>
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="7" y1="7" x2="21" y2="21" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                <line x1="21" y1="7" x2="7" y2="21" stroke="white" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            </button>
+          </div>
+          <nav className="flex flex-col gap-6 px-10 mt-8">
+            <a href="#about" className="text-white text-xl font-normal" onClick={() => setMobileNavOpen(false)}>About us</a>
+            <a href="#our-work" className="text-white text-xl font-normal" onClick={() => setMobileNavOpen(false)}>Our work</a>
+            <a href="#services" className="text-white text-xl font-normal" onClick={() => setMobileNavOpen(false)}>Services</a>
+            <a href="#testimonials" className="text-white text-xl font-normal" onClick={() => setMobileNavOpen(false)}>Testimonials</a>
+            <a href="#faqs" className="text-white text-xl font-normal" onClick={() => setMobileNavOpen(false)}>FAQs</a>
+            <a href="#contact" className="text-white text-xl font-normal" onClick={() => setMobileNavOpen(false)}>Contact</a>
+          </nav>
+        </div>
+      )}
+    </div>
+  )
+}
+
+const ImageTicker = () => {
+  const images = [
+    '/Ticker Image 1.png',
+    '/Ticker Image 2.png',
+    '/Ticker Image 3.png',
+    '/Ticker Image 4.png',
+    '/Ticker Image 5.png',
+  ];
+  const [inView, setInView] = React.useState(false);
+  const tickerRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.2 }
+    );
+    if (tickerRef.current) observer.observe(tickerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  React.useEffect(() => {
+    if (!inView) return;
+    const ticker = tickerRef.current;
+    let anim: number;
+    let start: number | null = null;
+    let pos = 0;
+    const totalWidth = images.length * 400;
+    function step(ts: number) {
+      if (!start) start = ts;
+      const elapsed = ts - start;
+      pos = (elapsed / 40) % totalWidth;
+      if (ticker) ticker.scrollLeft = pos;
+      anim = requestAnimationFrame(step);
+    }
+    anim = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(anim);
+  }, [inView, images.length]);
+
+  const displayImages = [...images, ...images, images[0]];
+
+  return (
+    <div ref={tickerRef} className="overflow-x-hidden w-full mb-12 relative">
+      <div className="flex gap-8 ticker-track" style={{ minWidth: `${(images.length * 2 + 1) * 208}px` }}>
+        {displayImages.map((src, i) => (
+          <div
+            key={src + '-' + i}
+            className={`rounded-xl shadow fade-ticker-img`}
+            style={{
+              minWidth: 200,
+              minHeight: 250,
+              maxWidth: 200,
+              maxHeight: 250,
+              marginRight: i === displayImages.length - 1 ? 0 : 32, // 8*4px gap except last
+              opacity: inView ? 1 : 0,
+              animation: inView && i < images.length ? `fadeInTicker 0.3s ${0.2 + i * 0.08}s cubic-bezier(0.4,0,0.2,1) forwards` : 'none',
+              overflow: 'hidden',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: '#fff',
+            }}
+          >
+            <Image src={src} alt={`Project ${i % images.length + 1}`} width={200} height={250} className="object-cover w-full h-full rounded-xl" />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const StatsRow = () => {
+  const stats = [
+    { value: '8', label: 'Years experience', desc: 'Improving homes with expert craftsmanship for years' },
+    { value: '26', label: 'Projects completed', desc: 'Over 250 successful projects delivered with quality and care' },
+    { value: '30', label: 'Skilled Tradespeople', desc: 'Our team of 30 experts ensures top-quality results' },
+    { value: '100%', label: 'Client satisfaction', desc: 'All of our clients are satisfied with our work and service' },
+  ];
+  const [inView, setInView] = React.useState(false);
+  const statsRef = React.useRef<HTMLDivElement>(null);
+  React.useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.2 }
+    );
+    if (statsRef.current) observer.observe(statsRef.current);
+    return () => observer.disconnect();
+  }, []);
+  return (
+    <div ref={statsRef} className="grid md:grid-cols-4 gap-8 text-center">
+      {stats.map((s, i) => (
+        <div
+          key={s.label}
+          className="fade-in-stat"
+          style={{
+            opacity: inView ? 1 : 0,
+            transform: inView ? 'translateY(0)' : 'translateY(32px)',
+            transition: `opacity 0.3s ${0.2 + i * 0.1}s cubic-bezier(0.4,0,0.2,1), transform 0.3s ${0.2 + i * 0.1}s cubic-bezier(0.4,0,0.2,1)`
+          }}
+        >
+          <div className="text-4xl font-bold text-[#101014] mb-2">{s.value}</div>
+          <div className="font-semibold text-[#101014]">{s.label}</div>
+          <div className="text-[#3d3d47] text-sm mt-1">{s.desc}</div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const serviceList = [
+  {
+    title: 'Kitchens',
+    icon: <img src="/Kitchens Logo.png" alt="Kitchen Logo" className="w-7 h-7 object-contain inline-block" />,
+    image: '/Kitchen.png',
+    desc: 'At LifetimeArt, we design and build stunning kitchens tailored to your style and needs. Whether you’re after a sleek modern space or a classic, timeless look, our expert team delivers high-quality craftsmanship, functionality, and attention to detail to create the heart of your home.'
+  },
+  {
+    title: 'Loft Conversions',
+    icon: <img src="/Loft Conversions Logo.png" alt="Loft Logo" className="w-7 h-7 object-contain inline-block" />,
+    image: '/Loft Conversions.png',
+    desc: 'Transform your unused attic into a beautiful, functional living space. Our loft conversion services maximize your home’s potential, adding value and comfort with expert planning and execution.'
+  },
+  {
+    title: 'Bathrooms',
+    icon: <img src="/Bathrooms Logo.png" alt="Bathroom Logo" className="w-7 h-7 object-contain inline-block" />,
+    image: '/Bathroom.png',
+    desc: 'Upgrade your bathroom with our bespoke renovation services. We create luxurious, relaxing spaces with modern amenities and elegant finishes, tailored to your preferences and lifestyle.'
+  },
+  {
+    title: 'Extensions',
+    icon: <img src="/Extensions Logo.png" alt="Extension Logo" className="w-7 h-7 object-contain inline-block" />,
+    image: '/Extension.png',
+    desc: 'Expand your living space with a custom extension. From design to build, we handle every aspect to ensure seamless integration with your existing home and a result that exceeds expectations.'
+  },
+  {
+    title: 'Restorations',
+    icon: <img src="/Restorations Logo.png" alt="Restoration Logo" className="w-7 h-7 object-contain inline-block" />,
+    image: '/Restoration.png',
+    desc: 'Preserve the charm and character of your property with our expert restoration services. We combine traditional techniques with modern solutions to revitalize and protect your home.'
+  },
+  {
+    title: 'External Works',
+    icon: <img src="/External Works Logo.png" alt="External Works Logo" className="w-7 h-7 object-contain inline-block" />,
+    image: '/External Works.png',
+    desc: 'Enhance your home’s exterior with our comprehensive external works, including landscaping, driveways, patios, and more. We create beautiful, functional outdoor spaces to complement your lifestyle.'
+  },
+];
+
+function ServiceImage({ image }: { image: string }) {
+  return (
+    <img
+      src={image}
+      alt="Service Preview"
+      className="rounded-xl object-cover w-[600px] h-[580px] shadow-lg border border-[#ececec] bg-white"
+      style={{ maxWidth: 680, maxHeight: 777 }}
+    />
+  );
+}
+
+const testimonials = [
+  {
+    text: "I couldn't be happier with my loft conversion. The attention to detail and quality of work were outstanding. Refit made the whole process smooth and stress-free!",
+    name: "Emily Carter",
+    img: "/Laura Davies.png"
+  },
+  {
+    text: "Refit transformed our outdoor space with a beautiful garden path. The work was completed on time, and the finish is excellent. A great team to work with!",
+    name: "Emily Carter",
+    img: "/Laura Davies.png"
+  },
+  {
+    text: "Brilliant service from start to finish. The team was professional, communicative, and the results exceeded my expectations. My new bathroom looks amazing!",
+    name: "Emily Carter",
+    img: "/Laura Davies.png"
+  },
+  {
+    text: "The craftsmanship was top-notch and the team was professional throughout. Highly recommend!",
+    name: "Emily Carter",
+    img: "/Laura Davies.png"
+  },
+  {
+    text: "Excellent communication and attention to detail. The project was delivered on time and on budget.",
+    name: "Emily Carter",
+    img: "/Laura Davies.png"
+  },
+  {
+    text: "Our kitchen renovation exceeded our expectations. The team was friendly and efficient.",
+    name: "Emily Carter",
+    img: "/Laura Davies.png"
+  },
+  {
+    text: "We love our new bathroom! The process was smooth and the results are stunning.",
+    name: "Emily Carter",
+    img: "/Laura Davies.png"
+  },
+  {
+    text: "Professional, reliable, and creative. Would definitely use their services again.",
+    name: "Emily Carter",
+    img: "/Laura Davies.png"
+  },
+  {
+    text: "The best renovation experience we've had. Every detail was perfect.",
+    name: "Emily Carter",
+    img: "/Laura Davies.png"
+  },
+  {
+    text: "From start to finish, the team was amazing. The quality of work is outstanding.",
+    name: "Emily Carter",
+    img: "/Laura Davies.png"
+  },
+];
+
+function TestimonialsCarousel() {
+  const rowCount = 2;
+  const cardsPerRow = 5;
+  const row1 = [...testimonials, ...testimonials.slice(0, cardsPerRow)];
+  const row2 = [...testimonials.slice().reverse(), ...testimonials.slice(-cardsPerRow).reverse()];
+
+  return (
+    <div className="space-y-8">
+      {[row1, row2].map((row, rowIdx) => (
+        <div
+          key={rowIdx}
+          className="overflow-x-hidden w-full"
+          style={{ maskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)' }}
+        >
+          <div
+            className={`flex gap-6 animate-carousel-row${rowIdx + 1}`}
+            style={{ minWidth: `${(row.length) * 260}px` }}
+          >
+            {row.map((t, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-xl shadow p-6 flex flex-col justify-between h-full min-w-[250px] max-w-[250px]"
+              >
+                <div>
+                  <div className="flex mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i} className="w-5 h-5 text-black">★</span>
+                    ))}
+                  </div>
+                  <p className="text-[#3d3d47] mb-4 text-sm">{t.text}</p>
+                </div>
+                <div className="flex items-center gap-3 mt-4">
+                  <img src={t.img} alt={t.name} className="w-10 h-10 rounded-full object-cover" />
+                  <div>
+                    <div className="font-semibold text-[#101014] text-sm">{t.name}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+      <style jsx>{`
+        @keyframes carousel-row1 {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes carousel-row2 {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+        .animate-carousel-row1 {
+          animation: carousel-row1 40s linear infinite;
+        }
+        .animate-carousel-row2 {
+          animation: carousel-row2 40s linear infinite;
+        }
+      `}</style>
+    </div>
+  );
+}
+
+function FAQsAccordion() {
+  const faqs = [
+    {
+      q: 'What area are you based in?',
+      a: 'We primarily serve London and surrounding areas, but depending on the project, we may be able to travel further. Get in touch to discuss your location and project needs.'
+    },
+    {
+      q: 'How long does a typical project take?',
+      a: 'Project duration varies depending on the scope and complexity. Most projects are completed within a few weeks to a few months. We provide a detailed timeline during the consultation.'
+    },
+    {
+      q: 'Do you offer free quotes?',
+      a: 'Yes, we offer free, no-obligation quotes for all projects. Contact us to arrange a consultation.'
+    },
+    {
+      q: 'Will I need planning permission for my project?',
+      a: 'Some projects may require planning permission. We can advise you on the requirements and assist with the application process if needed.'
+    },
+    {
+      q: 'Do you provide a guarantee for your work?',
+      a: 'Yes, all our work is covered by a comprehensive guarantee for your peace of mind.'
+    },
+    {
+      q: 'Can I stay in my home while the work is being done?',
+      a: 'In many cases, yes. We strive to minimize disruption and keep your home as comfortable as possible during the project.'
+    },
+    {
+      q: 'How do I get started with a project?',
+      a: 'Simply contact us to arrange a consultation. We’ll discuss your needs, provide a quote, and guide you through the next steps.'
+    },
+  ];
+  const [openIdx, setOpenIdx] = React.useState(0);
+  return (
+    <div className="flex flex-col gap-4">
+      {faqs.map((item, idx) => {
+        const open = openIdx === idx;
+        return (
+          <div
+            key={idx}
+            className={`rounded-xl bg-white shadow transition-all duration-300 ${open ? 'ring-2 ring-[#23232a] scale-[1.01]' : ''}`}
+          >
+            <button
+              className="w-full flex items-center justify-between px-6 py-5 text-left focus:outline-none text-[#101014] text-lg font-medium rounded-xl"
+              onClick={() => setOpenIdx(open ? -1 : idx)}
+              aria-expanded={open}
+            >
+              <span>{item.q}</span>
+              <span className="text-2xl font-bold transition-transform duration-200">
+                {open ? '×' : '+'}
+              </span>
+            </button>
+            <div
+              className={`overflow-hidden transition-all duration-300 px-6 ${open ? 'max-h-40 py-2 opacity-100' : 'max-h-0 py-0 opacity-0'}`}
+              aria-hidden={!open}
+            >
+              <p className="text-[#3d3d47] text-base leading-relaxed">{item.a}</p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
