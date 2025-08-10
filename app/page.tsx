@@ -51,12 +51,12 @@ export default function Component() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#101014] text-white">
+    <div className="min-h-screen bg-[#101014] text-white text-base sm:text-lg">
       <nav className="fixed top-0 w-full z-50 fade-in-top transition-colors duration-1000"
         style={{ background: 'rgba(16,16,20,0.0)' }}
         id="main-navbar"
       >
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3 fade-in-top" style={{ animationDelay: '0.1s' }}>
               <button
@@ -69,11 +69,11 @@ export default function Component() {
                 aria-label="Home logo"
                 className="focus:outline-none bg-transparent border-0 p-0 m-0 cursor-pointer flex items-center gap-2"
               >
-                <img src="/Logo.png" alt="LifetimeArt Logo" className="w-8 h-8 inline-block align-middle" />
-                <span className="text-2xl font-light align-middle">LifetimeArt</span>
+                <img src="/Logo.png" alt="LifetimeArt Logo" className="w-8 h-8 sm:w-10 sm:h-10 inline-block align-middle" />
+                <span className="text-2xl sm:text-3xl font-light align-middle">LifetimeArt</span>
               </button>
             </div>
-            <div className="hidden md:flex items-center space-x-12 fade-in-top" style={{ animationDelay: '0.2s' }}>
+            <div className="hidden md:flex items-center space-x-8 lg:space-x-12 fade-in-top" style={{ animationDelay: '0.2s' }}>
               <a href="#about" className="text-white hover:text-[#e9ecf2] underline-anim font-medium">About</a>
               <a href="#services" className="text-white hover:text-[#e9ecf2] underline-anim font-medium">Services</a>
               <a href="#our-work" className="text-white hover:text-[#e9ecf2] underline-anim font-medium">Our work</a>
@@ -103,20 +103,20 @@ export default function Component() {
       </nav>
 
       <section id="hero" className="pt-24 bg-[#101014] text-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 pb-24">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24">
+          <div className="grid lg:grid-cols-2 gap-10 sm:gap-16 items-center">
             <div>
-              <span className="inline-flex items-center gap-2 bg-[#23232a] text-white text-xs font-semibold px-3 py-1 rounded-full shadow pop-in mb-6" style={{ animationDelay: '0.3s' }}>
+              <span className="inline-flex items-center gap-2 bg-[#23232a] text-white text-xs sm:text-sm font-semibold px-3 py-1 rounded-full shadow pop-in mb-4 sm:mb-6" style={{ animationDelay: '0.3s' }}>
                 <span className="inline-block w-2 h-2 bg-[#bfc2c9] rounded-full"></span>
                 Available for work
               </span>
-              <h1 className="text-6xl lg:text-5xl font-extrabold mb-6 leading-tight fade-in" style={{ animationDelay: '0.4s' }}>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 leading-tight fade-in" style={{ animationDelay: '0.4s' }}>
                 Your trusted partner<br />for quality home<br />improvement
               </h1>
-              <p className="text-lg lg:text-2xl text-[#bfc2c9] mb-10 leading-relaxed fade-in" style={{ animationDelay: '0.5s' }}>
+              <p className="text-base sm:text-lg lg:text-2xl text-[#bfc2c9] mb-6 sm:mb-10 leading-relaxed fade-in" style={{ animationDelay: '0.5s' }}>
                 LifetimeArt delivers expert home improvements, creating beautiful and functional spaces with quality craftsmanship.
               </p>
-              <div className="flex gap-4 fade-in" style={{ animationDelay: '0.6s' }}>
+              <div className="flex gap-3 sm:gap-4 fade-in" style={{ animationDelay: '0.6s' }}>
                 <Button size="lg" className="bg-[#23232a] text-white hover:bg-[#23232a]/80 btn-lift font-semibold px-8 py-4 text-lg shadow-lg flex items-center gap-2">
                   Work with us <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -129,7 +129,7 @@ export default function Component() {
                 alt="Hero"
                 width={480}
                 height={600}
-                className="rounded-2xl object-cover fade-in-scale parallax shadow-2xl border-4 border-white/10"
+                className="rounded-2xl object-cover fade-in-scale parallax shadow-2xl border-4 border-white/10 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl h-auto"
                 style={{ animationDelay: '0.7s' }}
                 priority
               />
@@ -148,15 +148,15 @@ export default function Component() {
         </div>
       </section>
 
-      <section id="about" className="bg-[#fafafa] py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center py-25">
+      <section id="about" className="bg-[#fafafa] py-14 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid md:grid-cols-2 gap-8 sm:gap-16 items-center py-10 sm:py-25">
             <div>
-              <Badge className="mb-4 bg-[#23232a] text-white">About us</Badge>
-              <h2 className="text-4xl font-bold text-[#23232a] mb-6 leading-tight">Home<br />Improvement<br />Specialists</h2>
+              <Badge className="mb-3 sm:mb-4 bg-[#23232a] text-white text-sm sm:text-base">About us</Badge>
+              <h2 className="text-2xl sm:text-4xl font-bold text-[#23232a] mb-4 sm:mb-6 leading-tight">Home<br />Improvement<br />Specialists</h2>
             </div>
             <div>
-              <p className="text-md text-[#3d3d47] mb-10 leading-relaxed">
+              <p className="text-sm sm:text-md text-[#3d3d47] mb-6 sm:mb-10 leading-relaxed">
                 Welcome to LifetimeArt, your trusted home improvement experts, dedicated to transforming homes with precision and care. With years of experience in building kitchens, bathrooms, garages, and more, we take pride in delivering top-quality craftsmanship and a seamless customer experience. Our mission is to bring your vision to life while ensuring clear communication and expert guidance at every step. Let’s create a home you’ll love!
               </p>
             </div>
@@ -166,74 +166,82 @@ export default function Component() {
         </div>
       </section>
 
-      <section id="services" className="py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-[#23232a] text-white">Services</Badge>
-            <h2 className="text-4xl font-bold text-[#23232a] mb-4">What we do</h2>
-            <p className="text-[#3d3d47]">Find out which one of our services fit the needs of your project</p>
+      <section id="services" className="py-14 sm:py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-10">
+            <Badge className="mb-3 sm:mb-4 bg-[#23232a] text-white text-sm sm:text-base">Services</Badge>
+            <h2 className="text-2xl sm:text-4xl font-bold text-[#23232a] mb-2 sm:mb-4">What we do</h2>
+            <p className="text-[#3d3d47] text-sm sm:text-base">Find out which one of our services fit the needs of your project</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            <div className="flex justify-center">
-              {services.length > 0 && <ServiceImage image={services[selected]?.image} />}
+          <div className="flex flex-col gap-8 items-center md:grid md:grid-cols-2 md:gap-12 md:items-start">
+            <div className="w-full flex justify-center md:justify-end">
+              {services.length > 0 && (
+                <img
+                  src={services[selected === -1 ? 0 : selected]?.image}
+                  alt="Service Preview"
+                  className="rounded-xl object-cover w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-auto md:h-[340px] lg:h-[420px] xl:h-[500px] shadow-lg border border-[#ececec] bg-white"
+                  style={{ aspectRatio: '4/3', minHeight: 180 }}
+                />
+              )}
             </div>
-            <div>
-              <div className="space-y-2">
-                {services.map((service, idx) => (
-                  <div key={service.title} className="border-b last:border-b-0 border-[#ececec]">
-                    <button
-                      className="w-full flex items-center justify-between py-5 px-2 text-left group focus:outline-none"
-                      onClick={() => setSelected(idx)}
-                      aria-expanded={selected === idx}
-                    >
-                      <div className="flex items-center gap-3">
-                        <span className="text-2xl"><img src={service.icon} alt={service.title + ' Logo'} className="w-7 h-7 object-contain inline-block" /></span>
-                        <span className="font-medium text-lg text-[#23232a]">{service.title}</span>
-                      </div>
-                      <span className="text-xl transition-transform duration-200">
-                        {selected === idx ? (
-                          <span onClick={e => { e.stopPropagation(); setSelected(-1); }} className="cursor-pointer">×</span>
-                        ) : (
-                          <span>+</span>
-                        )}
-                      </span>
-                    </button>
+            <div className="w-full">
+              <div className="flex flex-col gap-4">
+                {services.map((service, idx) => {
+                  const open = selected === idx;
+                  return (
                     <div
-                      className={`overflow-hidden transition-all duration-300 ${selected === idx ? 'max-h-40 opacity-100 py-2' : 'max-h-0 opacity-0 py-0'}`}
-                      aria-hidden={selected !== idx}
+                      key={service.title}
+                      className={`rounded-xl bg-white shadow transition-all duration-300 border border-[#ececec] ${open ? 'ring-2 ring-[#23232a] scale-[1.01]' : ''}`}
                     >
-                      <p className="text-[#3d3d47] text-sm px-10 pb-4">{service.desc}</p>
+                      <button
+                        className="w-full flex items-center justify-between px-6 py-5 text-left focus:outline-none text-[#101014] text-lg font-medium rounded-xl"
+                        onClick={() => setSelected(open ? -1 : idx)}
+                        aria-expanded={open}
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl"><img src={service.icon} alt={service.title + ' Logo'} className="w-7 h-7 object-contain inline-block" /></span>
+                          <span>{service.title}</span>
+                        </div>
+                        <span className="text-2xl font-bold transition-transform duration-200">
+                          {open ? '×' : '+'}
+                        </span>
+                      </button>
+                      <div
+                        className={`overflow-hidden transition-all duration-300 px-6 ${open ? 'max-h-40 py-2 opacity-100' : 'max-h-0 py-0 opacity-0'}`}
+                        aria-hidden={!open}
+                      >
+                        <p className="text-[#3d3d47] text-base leading-relaxed">{service.desc}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="our-work" className="py-20 bg-[#ffffff] text-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-[#23232a] text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">Our work</span>
-            <h2 className="text-4xl font-bold mb-4 text-[#101014]">Get inspired by our work</h2>
-            <p className="text-[#101014] max-w-2xl mx-auto">See how we’ve transformed homes with our expert
-              craftsmanship and attention to detail.</p>
+      <section id="our-work" className="py-14 sm:py-20 bg-[#ffffff] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-10 sm:mb-16">
+            <span className="inline-block bg-[#23232a] text-white text-xs sm:text-sm font-semibold px-3 py-1 rounded-full mb-3 sm:mb-4">Our work</span>
+            <h2 className="text-2xl sm:text-4xl font-bold mb-2 sm:mb-4 text-[#101014]">Get inspired by our work</h2>
+            <p className="text-[#101014] text-sm sm:text-base max-w-2xl mx-auto">See how we’ve transformed homes with our expert craftsmanship and attention to detail.</p>
           </div>
 
-          <div className="space-y-16">
-            <div className="bg-[#e9ecf2] text-[#101014] rounded-2xl mb-40 shadow-lg flex flex-col md:flex-row overflow-hidden">
-              <div className="md:w-1/3 flex items-center justify-center p-6">
-                <img src="/Modern kitchen refit.png" alt="Modern kitchen refit" className="rounded-xl w-full h-auto object-cover" />
+          <div className="space-y-10 sm:space-y-16">
+            <div className="bg-[#e9ecf2] text-[#101014] rounded-2xl mb-20 sm:mb-40 shadow-lg flex flex-col md:flex-row overflow-hidden">
+              <div className="md:w-1/3 flex items-center justify-center p-4 sm:p-6">
+                <img src="/Modern kitchen refit.png" alt="Modern kitchen refit" className="rounded-xl w-full max-w-xs sm:max-w-sm md:max-w-full h-auto object-cover" />
               </div>
-              <div className="md:w-2/3 p-8 flex flex-col justify-center">
-                <h3 className="text-2xl font-bold mb-2">Modern kitchen refit</h3>
-                <p className="mb-4 text-xl">This kitchen transformation brought sleek, modern design and enhanced  functionality to our client’s home. We installed custom cabinetry, high-quality worktops, and state-of-the-art appliances, creating a stylish yet practical space perfect for cooking and entertaining. With attention to every detail, we delivered a kitchen that balances aesthetics and usability.</p>
-                <div className="flex gap-2 mb-4">
+              <div className="md:w-2/3 p-4 sm:p-8 flex flex-col justify-center">
+                <h3 className="text-lg sm:text-2xl font-bold mb-1 sm:mb-2">Modern kitchen refit</h3>
+                <p className="mb-2 sm:mb-4 text-base sm:text-xl">This kitchen transformation brought sleek, modern design and enhanced  functionality to our client’s home. We installed custom cabinetry, high-quality worktops, and state-of-the-art appliances, creating a stylish yet practical space perfect for cooking and entertaining. With attention to every detail, we delivered a kitchen that balances aesthetics and usability.</p>
+                <div className="flex gap-2 mb-2 sm:mb-4">
                   <span className="bg-[#23232a] text-white text-xs px-3 py-1 rounded-full">Kitchen</span>
                   <span className="bg-[#23232a] text-white text-xs px-3 py-1 rounded-full">Wooden</span>
                 </div>
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-2 sm:gap-4">
                   <span className="text-2xl">“</span>
                   <div>
                     <p className="mb-2 text-base font-medium text-xl">LifetimeArt completely transformed our kitchen, making it both beautiful and highly functional. The craftsmanship was outstanding, and the team was professional and communicative throughout. We couldn't be happier with the result!</p>
@@ -246,19 +254,19 @@ export default function Component() {
               </div>
             </div>
 
-            <div className="bg-[#23232a] text-white rounded-2xl my-40 shadow-lg flex flex-col md:flex-row overflow-hidden">
-              <div className="md:w-1/3 flex items-center justify-center p-6">
-                <img src="/External garden path build.png" alt="External garden path build" className="rounded-xl w-full h-auto object-cover" />
+            <div className="bg-[#23232a] text-white rounded-2xl my-20 sm:my-40 shadow-lg flex flex-col md:flex-row overflow-hidden">
+              <div className="md:w-1/3 flex items-center justify-center p-4 sm:p-6">
+                <img src="/External garden path build.png" alt="External garden path build" className="rounded-xl w-full max-w-xs sm:max-w-sm md:max-w-full h-auto object-cover" />
               </div>
-              <div className="md:w-2/3 p-8 flex flex-col justify-center">
-                <h3 className="text-2xl font-bold mb-2">External garden path build</h3>
-                <p className="mb-4 text-xl">Our team designed and built a durable, visually appealing garden path to enhance the outdoor space. Using premium materials, we created a seamless walkway that blends naturally with the landscape, providing both functionality and aesthetic charm. The result is a stylish, well-crafted path
+              <div className="md:w-2/3 p-4 sm:p-8 flex flex-col justify-center">
+                <h3 className="text-lg sm:text-2xl font-bold mb-1 sm:mb-2">External garden path build</h3>
+                <p className="mb-2 sm:mb-4 text-base sm:text-xl">Our team designed and built a durable, visually appealing garden path to enhance the outdoor space. Using premium materials, we created a seamless walkway that blends naturally with the landscape, providing both functionality and aesthetic charm. The result is a stylish, well-crafted path
                   that elevates the overall garden design.</p>
-                <div className="flex gap-2 mb-4">
+                <div className="flex gap-2 mb-2 sm:mb-4">
                   <span className="bg-[#101014] text-white text-xs px-3 py-1 rounded-full">External Works</span>
                   <span className="bg-[#101014] text-white text-xs px-3 py-1 rounded-full">Walkway</span>
                 </div>
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-2 sm:gap-4">
                   <span className="text-2xl">“</span>
                   <div>
                     <p className="mb-2 text-base font-medium text-xl">The team at LifetimeArt did an amazing job on our garden path. It's sturdy, looks fantastic, and has completely transformed our outdoor space. They listened to our vision and delivered exactly what we wanted - highly recommended!</p>
@@ -271,19 +279,19 @@ export default function Component() {
               </div>
             </div>
 
-            <div className="bg-[#e9ecf2] text-[#101014] rounded-2xl mt-40 mb-20 shadow-lg flex flex-col md:flex-row overflow-hidden">
-              <div className="md:w-1/3 flex items-center justify-center p-6">
-                <img src="/Bathroom renovation.png" alt="Bathroom renovation" className="rounded-xl w-full h-auto object-cover" />
+            <div className="bg-[#e9ecf2] text-[#101014] rounded-2xl my-20 sm:my-40 shadow-lg flex flex-col md:flex-row overflow-hidden">
+              <div className="md:w-1/3 flex items-center justify-center p-4 sm:p-6">
+                <img src="/Bathroom renovation.png" alt="Bathroom renovation" className="rounded-xl w-full max-w-xs sm:max-w-sm md:max-w-full h-auto object-cover" />
               </div>
-              <div className="md:w-2/3 p-8 flex flex-col justify-center">
-                <h3 className="text-2xl font-bold mb-2">Bathroom renovation</h3>
-                <p className="mb-4 text-xl">We revitalized this bathroom with a fresh, modern design, incorporating high-end tiling, sleek fixtures, and efficient lighting. The layout was optimized to maximize space, creating a luxurious and relaxing atmosphere. The final result is a beautifully crafted bathroom that enhances both
+              <div className="md:w-2/3 p-4 sm:p-8 flex flex-col justify-center">
+                <h3 className="text-lg sm:text-2xl font-bold mb-1 sm:mb-2">Bathroom renovation</h3>
+                <p className="mb-2 sm:mb-4 text-base sm:text-xl">We revitalized this bathroom with a fresh, modern design, incorporating high-end tiling, sleek fixtures, and efficient lighting. The layout was optimized to maximize space, creating a luxurious and relaxing atmosphere. The final result is a beautifully crafted bathroom that enhances both
                   comfort and functionality.</p>
-                <div className="flex gap-2 mb-4">
+                <div className="flex gap-2 mb-2 sm:mb-4">
                   <span className="bg-[#23232a] text-white text-xs px-3 py-1 rounded-full">Kitchen</span>
                   <span className="bg-[#23232a] text-white text-xs px-3 py-1 rounded-full">Wooden</span>
                 </div>
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-2 sm:gap-4">
                   <span className="text-2xl">“</span>
                   <div>
                     <p className="mb-2 text-base font-medium text-xl">LifetimeArt completely transformed our kitchen, making it both beautiful and highly functional. The craftsmanship was outstanding, and the team was professional and communicative throughout. We couldn't be happier with the result!</p>
@@ -299,28 +307,27 @@ export default function Component() {
         </div>
       </section>
 
-      <section className="py-20 bg-[#fafafa]" id="testimonials">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-[#23232a] text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">Testimonials</span>
-            <h2 className="text-4xl font-bold text-[#101014] mb-4">Hear from our clients</h2>
-            <p className="text-[#3d3d47] max-w-2xl mx-auto">Hear from our happy clients about their experience working with Refit and the quality of our craftsmanship.</p>
+      <section className="py-14 sm:py-20 bg-[#fafafa]" id="testimonials">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-10 sm:mb-16">
+            <span className="inline-block bg-[#23232a] text-white text-xs sm:text-sm font-semibold px-3 py-1 rounded-full mb-3 sm:mb-4">Testimonials</span>
+            <h2 className="text-2xl sm:text-4xl font-bold text-[#101014] mb-2 sm:mb-4">Hear from our clients</h2>
+            <p className="text-[#3d3d47] text-sm sm:text-base max-w-2xl mx-auto">Hear from our happy clients about their experience working with Refit and the quality of our craftsmanship.</p>
           </div>
-
           <TestimonialsCarousel testimonials={testimonials} />
         </div>
       </section>
 
 
-      <section id="faqs" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row gap-16 items-start">
-          <div className="md:w-1/3 mb-10 md:mb-0">
-            <span className="inline-block bg-[#23232a] text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">FAQs</span>
-            <h2 className="text-4xl font-bold text-[#101014] mb-6 leading-tight">Answering Your<br />Questions</h2>
-            <p className="text-[#3d3d47] mb-8">Got more questions? Send us your enquiry below</p>
-            <a href="#contact" className="inline-flex items-center gap-2 bg-[#f4f4f4] text-[#101014] font-semibold px-6 py-3 rounded-full shadow hover:bg-[#ececec] transition">
+      <section id="faqs" className="py-16 sm:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row gap-8 sm:gap-16 items-start">
+          <div className="md:w-1/3 mb-8 sm:mb-10 md:mb-0">
+            <span className="inline-block bg-[#23232a] text-white text-xs sm:text-sm font-semibold px-3 py-1 rounded-full mb-3 sm:mb-4">FAQs</span>
+            <h2 className="text-2xl sm:text-4xl font-bold text-[#101014] mb-4 sm:mb-6 leading-tight">Answering Your<br />Questions</h2>
+            <p className="text-[#3d3d47] mb-6 sm:mb-8 text-sm sm:text-base">Got more questions? Send us your enquiry below</p>
+            <a href="#contact" className="inline-flex items-center gap-2 bg-[#f4f4f4] text-[#101014] font-semibold px-5 sm:px-6 py-2 sm:py-3 rounded-full shadow hover:bg-[#ececec] transition text-sm sm:text-base">
               Get in touch
-              <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#101014] text-white ml-2">
+              <span className="inline-flex items-center justify-center w-6 sm:w-7 h-6 sm:h-7 rounded-full bg-[#101014] text-white ml-2">
                 <svg width="18" height="18" fill="none" viewBox="0 0 18 18"><path d="M5 13l6-6M11 13V7H5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </span>
             </a>
@@ -331,15 +338,15 @@ export default function Component() {
         </div>
       </section>
 
-      <section id="contact" className="py-20 bg-[#101014] text-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16">
+      <section id="contact" className="py-14 sm:py-20 bg-[#101014] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-16">
             <div>
-              <h2 className="text-4xl font-bold mb-6">Get in Touch</h2>
-              <p className="text-[#d0d1db] text-lg mb-8">
+              <h2 className="text-2xl sm:text-4xl font-bold mb-4 sm:mb-6">Get in Touch</h2>
+              <p className="text-[#d0d1db] text-base sm:text-lg mb-6 sm:mb-8">
                 For any inquiries or to explore your vision further, we invite  you to contact our professional team using the details provided below.
               </p>
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 <div className="flex items-center gap-4">
                   <div>
                     <div className="font-semibold">Office</div>
@@ -371,9 +378,9 @@ export default function Component() {
                 </div>
               </div>
             </div>
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold text-[#101014] mb-6">Send us a message</h3>
-              <form className="space-y-6" autoComplete="off">
+            <Card className="p-5 sm:p-8">
+              <h3 className="text-lg sm:text-2xl font-bold text-[#101014] mb-4 sm:mb-6">Send us a message</h3>
+              <form className="space-y-4 sm:space-y-6" autoComplete="off">
                 <div>
                   <label className="block text-sm font-medium text-[#3d3d47] mb-2">Name<span className="text-red-500">*</span></label>
                   <input
@@ -416,16 +423,16 @@ export default function Component() {
         </div>
       </section>
 
-      <footer className="bg-[#18181b] text-white pt-16 pb-8 rounded-b-2xl">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-12 mb-8">
-            <div className="flex items-center gap-3 mb-4 md:mb-0">
-              <img src="/Logo.png" alt="LifetimeArt Logo" className="w-8 h-8" />
-              <span className="text-2xl font-light">LifetimeArt</span>
+      <footer className="bg-[#18181b] text-white pt-10 sm:pt-16 pb-6 sm:pb-8 rounded-b-2xl text-sm sm:text-base">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-8 sm:gap-12 mb-6 sm:mb-8">
+            <div className="flex items-center gap-3 mb-3 sm:mb-4 md:mb-0">
+              <img src="/Logo.png" alt="LifetimeArt Logo" className="w-8 h-8 sm:w-10 sm:h-10" />
+              <span className="text-xl sm:text-2xl font-light">LifetimeArt</span>
             </div>
             <div>
-              <div className="text-xl font-normal mb-4">Quick links</div>
-              <div className="grid grid-cols-2 gap-x-12 gap-y-2 text-[#d0d1db]">
+              <div className="text-lg sm:text-xl font-normal mb-3 sm:mb-4">Quick links</div>
+              <div className="grid grid-cols-2 gap-x-8 sm:gap-x-12 gap-y-2 text-[#d0d1db]">
                 <a href="#about" className="hover:text-white">About us</a>
                 <a href="#testimonials" className="hover:text-white">Testimonials</a>
                 <a href="#our-work" className="hover:text-white">Our work</a>
@@ -435,8 +442,8 @@ export default function Component() {
               </div>
             </div>
           </div>
-          <hr className="border-[#23232a] mb-6" />
-          <div className="text-[#d0d1db] text-base pl-2">© 2025 LifetimeArt. All rights reserved.</div>
+          <hr className="border-[#23232a] mb-4 sm:mb-6" />
+          <div className="text-[#d0d1db] text-xs sm:text-base pl-2">© 2025 LifetimeArt. All rights reserved.</div>
         </div>
       </footer>
 
