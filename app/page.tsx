@@ -11,6 +11,9 @@ import * as React from "react"
 export default function Component() {
   const heroImgRef = React.useRef<HTMLImageElement>(null)
   const [mobileNavOpen, setMobileNavOpen] = React.useState(false)
+  const [services, setServices] = React.useState<any[]>([]);
+  const [faqs, setFaqs] = React.useState<any[]>([]);
+  const [testimonials, setTestimonials] = React.useState<any[]>([]);
   const [selected, setSelected] = React.useState(0);
   React.useEffect(() => {
     const handleScroll = () => {
@@ -34,6 +37,18 @@ export default function Component() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  React.useEffect(() => {
+    fetch('/api/services')
+      .then(res => res.json())
+      .then(setServices);
+    fetch('/api/faqs')
+      .then(res => res.json())
+      .then(setFaqs);
+    fetch('/api/testimonials')
+      .then(res => res.json())
+      .then(setTestimonials);
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#101014] text-white">
@@ -160,11 +175,11 @@ export default function Component() {
           </div>
           <div className="grid md:grid-cols-2 gap-12 items-start">
             <div className="flex justify-center">
-              <ServiceImage image={serviceList[selected].image} />
+              {services.length > 0 && <ServiceImage image={services[selected]?.image} />}
             </div>
             <div>
               <div className="space-y-2">
-                {serviceList.map((service, idx) => (
+                {services.map((service, idx) => (
                   <div key={service.title} className="border-b last:border-b-0 border-[#ececec]">
                     <button
                       className="w-full flex items-center justify-between py-5 px-2 text-left group focus:outline-none"
@@ -172,7 +187,7 @@ export default function Component() {
                       aria-expanded={selected === idx}
                     >
                       <div className="flex items-center gap-3">
-                        <span className="text-2xl">{service.icon}</span>
+                        <span className="text-2xl"><img src={service.icon} alt={service.title + ' Logo'} className="w-7 h-7 object-contain inline-block" /></span>
                         <span className="font-medium text-lg text-[#23232a]">{service.title}</span>
                       </div>
                       <span className="text-xl transition-transform duration-200">
@@ -292,7 +307,7 @@ export default function Component() {
             <p className="text-[#3d3d47] max-w-2xl mx-auto">Hear from our happy clients about their experience working with Refit and the quality of our craftsmanship.</p>
           </div>
 
-          <TestimonialsCarousel />
+          <TestimonialsCarousel testimonials={testimonials} />
         </div>
       </section>
 
@@ -311,7 +326,7 @@ export default function Component() {
             </a>
           </div>
           <div className="md:w-2/3 w-full">
-            <FAQsAccordion />
+            <FAQsAccordion faqs={faqs} />
           </div>
         </div>
       </section>
@@ -563,45 +578,6 @@ const StatsRow = () => {
   );
 };
 
-const serviceList = [
-  {
-    title: 'Kitchens',
-    icon: <img src="/Kitchens Logo.png" alt="Kitchen Logo" className="w-7 h-7 object-contain inline-block" />,
-    image: '/Kitchen.png',
-    desc: 'At LifetimeArt, we design and build stunning kitchens tailored to your style and needs. Whether you prefer sleek modern lines or a timeless, classic look, our team delivers premium craftsmanship, functional layouts, and meticulous attention to detail—creating a kitchen you’ll love to cook and gather in.'
-  },
-  {
-    title: 'Loft Conversions',
-    icon: <img src="/Loft Conversions Logo.png" alt="Loft Logo" className="w-7 h-7 object-contain inline-block" />,
-    image: '/Loft Conversions.png',
-    desc: 'Transform unused loft space into a beautiful, practical part of your home. From cozy bedrooms to bright home offices, we handle everything from structural adjustments to finishing touches, ensuring your new space is safe, stylish, and seamlessly integrated with your existing home.'
-  },
-  {
-    title: 'Bathrooms',
-    icon: <img src="/Bathrooms Logo.png" alt="Bathroom Logo" className="w-7 h-7 object-contain inline-block" />,
-    image: '/Bathroom.png',
-    desc: 'We create bathrooms that balance relaxation and practicality, with designs ranging from spa-inspired retreats to minimalist, functional spaces. Our team sources high-quality fixtures and finishes, ensuring durability, elegance, and comfort for years to come.'
-  },
-  {
-    title: 'Extensions',
-    icon: <img src="/Extensions Logo.png" alt="Extension Logo" className="w-7 h-7 object-contain inline-block" />,
-    image: '/Extension.png',
-    desc: 'Expand your living space without compromising on style. Whether it’s a kitchen extension, a new family room, or an entire additional floor, we work closely with you to design and build an extension that complements your home and adds value.'
-  },
-  {
-    title: 'Restorations',
-    icon: <img src="/Restorations Logo.png" alt="Restoration Logo" className="w-7 h-7 object-contain inline-block" />,
-    image: '/Restoration.png',
-    desc: 'Preserve the charm of your property while upgrading it for modern living. Our restoration work combines traditional craftsmanship with modern techniques to breathe new life into historic or worn-down spaces.'
-  },
-  {
-    title: 'External Works',
-    icon: <img src="/External Works Logo.png" alt="External Works Logo" className="w-7 h-7 object-contain inline-block" />,
-    image: '/External Works.png',
-    desc: 'Enhance the beauty and functionality of your outdoor areas. From garden landscaping to patios, pathways, and exterior lighting, we create inviting spaces that connect your home to nature.'
-  },
-];
-
 function ServiceImage({ image }: { image: string }) {
   return (
     <img
@@ -613,60 +589,7 @@ function ServiceImage({ image }: { image: string }) {
   );
 }
 
-const testimonials = [
-  {
-    text: "I couldn't be happier with my loft conversion. The attention to detail and quality of work were outstanding. Refit made the whole process smooth and stress-free!",
-    name: "Emily Carter",
-    img: "/Laura Davies.png"
-  },
-  {
-    text: "Refit transformed our outdoor space with a beautiful garden path. The work was completed on time, and the finish is excellent. A great team to work with!",
-    name: "Emily Carter",
-    img: "/Laura Davies.png"
-  },
-  {
-    text: "Brilliant service from start to finish. The team was professional, communicative, and the results exceeded my expectations. My new bathroom looks amazing!",
-    name: "Emily Carter",
-    img: "/Laura Davies.png"
-  },
-  {
-    text: "The craftsmanship was top-notch and the team was professional throughout. Highly recommend!",
-    name: "Emily Carter",
-    img: "/Laura Davies.png"
-  },
-  {
-    text: "Excellent communication and attention to detail. The project was delivered on time and on budget.",
-    name: "Emily Carter",
-    img: "/Laura Davies.png"
-  },
-  {
-    text: "Our kitchen renovation exceeded our expectations. The team was friendly and efficient.",
-    name: "Emily Carter",
-    img: "/Laura Davies.png"
-  },
-  {
-    text: "We love our new bathroom! The process was smooth and the results are stunning.",
-    name: "Emily Carter",
-    img: "/Laura Davies.png"
-  },
-  {
-    text: "Professional, reliable, and creative. Would definitely use their services again.",
-    name: "Emily Carter",
-    img: "/Laura Davies.png"
-  },
-  {
-    text: "The best renovation experience we've had. Every detail was perfect.",
-    name: "Emily Carter",
-    img: "/Laura Davies.png"
-  },
-  {
-    text: "From start to finish, the team was amazing. The quality of work is outstanding.",
-    name: "Emily Carter",
-    img: "/Laura Davies.png"
-  },
-];
-
-function TestimonialsCarousel() {
+function TestimonialsCarousel({ testimonials }: { testimonials: { text: string, name: string, img: string }[] }) {
   const rowCount = 2;
   const cardsPerRow = 5;
   const row1 = [...testimonials, ...testimonials.slice(0, cardsPerRow)];
@@ -728,37 +651,7 @@ function TestimonialsCarousel() {
   );
 }
 
-function FAQsAccordion() {
-  const faqs = [
-    {
-      q: 'What area are you based in?',
-      a: 'We primarily serve London and the surrounding areas, but depending on the project, we can travel further. Contact us to discuss your location and requirements.'
-    },
-    {
-      q: 'How long does a typical project take?',
-      a: 'Project timelines vary depending on size and complexity. We’ll provide an estimated schedule during your consultation and keep you updated throughout the process.'
-    },
-    {
-      q: 'Do you offer free quotes?',
-      a: 'Yes, we offer free, no-obligation quotes. Our team will visit your property, assess your needs, and provide a detailed breakdown.'
-    },
-    {
-      q: 'Will I need planning permission for my project?',
-      a: 'This depends on the type and scope of your project. We can guide you through local regulations and help with applications if needed.'
-    },
-    {
-      q: 'Do you provide a guarantee for your work?',
-      a: 'Absolutely. All of our work is backed by a guarantee for quality and durability, giving you peace of mind.'
-    },
-    {
-      q: 'Can I stay in my home while the work is being done?',
-      a: 'In most cases, yes—though it may depend on the scope of work and areas affected. We’ll discuss options to minimise disruption.'
-    },
-    {
-      q: 'How do I get started with a project?',
-      a: 'Simply get in touch with our team. We’ll arrange a consultation, discuss your ideas, and prepare a tailored plan and quote.'
-    },
-  ];
+function FAQsAccordion({ faqs }: { faqs: { q: string, a: string }[] }) {
   const [openIdx, setOpenIdx] = React.useState(0);
   return (
     <div className="flex flex-col gap-4">
