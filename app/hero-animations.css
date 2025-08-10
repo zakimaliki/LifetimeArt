@@ -137,4 +137,89 @@
     .ticker-track {
         will-change: transform;
     }
+
+    /* Mobile-specific animations */
+    .slide-left {
+        animation: slideLeft 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .slide-right {
+        animation: slideRight 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes slideLeft {
+        from {
+            transform: translateX(100%);
+        }
+
+        to {
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideRight {
+        from {
+            transform: translateX(-100%);
+        }
+
+        to {
+            transform: translateX(0);
+        }
+    }
+
+    /* Mobile carousel animations */
+    @keyframes fadeInMobile {
+        from {
+            opacity: 0;
+            transform: scale(0.95) translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+    }
+
+    .mobile-fade-in {
+        animation: fadeInMobile 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    /* Swipe indicator animation */
+    @keyframes swipeHint {
+        0% {
+            transform: translateX(0);
+            opacity: 0;
+        }
+
+        50% {
+            transform: translateX(-10px);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateX(-20px);
+            opacity: 0;
+        }
+    }
+
+    .swipe-hint {
+        animation: swipeHint 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    /* Mobile hero image fade */
+    .mobile-hero-fade {
+        animation: mobileHeroFade 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes mobileHeroFade {
+        from {
+            opacity: 0;
+            transform: scale(1.1);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
 }

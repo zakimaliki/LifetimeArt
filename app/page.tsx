@@ -103,9 +103,36 @@ export default function Component() {
       </nav>
 
       <section id="hero" className="pt-24 bg-[#101014] text-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24">
+        {/* Mobile: background image with overlay and content on top */}
+        <div className="lg:hidden relative w-full min-h-[520px] flex items-end justify-center">
+          <Image
+            src="/hero-image-1280.png"
+            alt="Hero"
+            fill
+            priority
+            className="object-cover w-full h-full absolute top-0 left-0 z-0 mobile-hero-fade"
+            style={{ filter: 'brightness(0.55)' }}
+          />
+          <div className="relative z-10 w-full flex flex-col items-center px-6 pb-10 pt-20">
+            <span className="inline-flex items-center gap-2 bg-[#23232a]/80 text-white text-xs font-semibold px-3 py-1 rounded-full shadow pop-in mb-4">
+              <span className="inline-block w-2 h-2 bg-[#bfc2c9] rounded-full"></span>
+              Available for work
+            </span>
+            <h1 className="text-3xl font-extrabold mb-4 leading-tight text-center" style={{ textShadow: '0 2px 8px #0008' }}>
+              Your trusted partner<br />for quality home<br />improvement
+            </h1>
+            <p className="text-base text-[#e9ecf2] mb-6 leading-relaxed text-center max-w-md" style={{ textShadow: '0 2px 8px #0008' }}>
+              LifetimeArt delivers expert home improvements, creating beautiful and functional spaces with quality craftsmanship.
+            </p>
+            <Button size="lg" className="bg-[#23232a]/90 text-white hover:bg-[#23232a] btn-lift font-semibold px-8 py-4 text-lg shadow-lg flex items-center gap-2">
+              Work with us <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
+          </div>
+        </div>
+        {/* Desktop: image and card on the right */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24 hidden lg:block">
           <div className="grid lg:grid-cols-2 gap-10 sm:gap-16 items-center">
-            <div>
+            <div className="text-left">
               <span className="inline-flex items-center gap-2 bg-[#23232a] text-white text-xs sm:text-sm font-semibold px-3 py-1 rounded-full shadow pop-in mb-4 sm:mb-6" style={{ animationDelay: '0.3s' }}>
                 <span className="inline-block w-2 h-2 bg-[#bfc2c9] rounded-full"></span>
                 Available for work
@@ -113,7 +140,7 @@ export default function Component() {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 leading-tight fade-in" style={{ animationDelay: '0.4s' }}>
                 Your trusted partner<br />for quality home<br />improvement
               </h1>
-              <p className="text-base sm:text-lg lg:text-2xl text-[#bfc2c9] mb-6 sm:mb-10 leading-relaxed fade-in" style={{ animationDelay: '0.5s' }}>
+              <p className="text-base sm:text-lg lg:text-2xl text-[#bfc2c9] mb-6 sm:mb-10 leading-relaxed fade-in max-w-xl" style={{ animationDelay: '0.5s' }}>
                 LifetimeArt delivers expert home improvements, creating beautiful and functional spaces with quality craftsmanship.
               </p>
               <div className="flex gap-3 sm:gap-4 fade-in" style={{ animationDelay: '0.6s' }}>
@@ -140,7 +167,7 @@ export default function Component() {
                       <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <p className="text-base mb-3 font-medium">“LifetimeArt has been a game-changer for my home. Their ability to blend functionality with exquisite design is unparalleled.”</p>
+                  <p className="text-base mb-3 font-medium">"LifetimeArt has been a game-changer for my home. Their ability to blend functionality with exquisite design is unparalleled."</p>
                 </CardContent>
               </Card>
             </div>
@@ -225,79 +252,83 @@ export default function Component() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10 sm:mb-16">
             <span className="inline-block bg-[#23232a] text-white text-xs sm:text-sm font-semibold px-3 py-1 rounded-full mb-3 sm:mb-4">Our work</span>
-            <h2 className="text-2xl sm:text-4xl font-bold mb-2 sm:mb-4 text-[#101014]">Get inspired by our work</h2>
-            <p className="text-[#101014] text-sm sm:text-base max-w-2xl mx-auto">See how we’ve transformed homes with our expert craftsmanship and attention to detail.</p>
+            <h2 className="text-xl sm:text-4xl font-bold mb-2 sm:mb-4 text-[#101014] leading-tight sm:leading-tight">Get inspired by our work</h2>
+            <p className="text-[#101014] text-xs sm:text-base max-w-2xl mx-auto">See how we’ve transformed homes with our expert craftsmanship and attention to detail.</p>
           </div>
 
-          <div className="space-y-10 sm:space-y-16">
-            <div className="bg-[#e9ecf2] text-[#101014] rounded-2xl mb-20 sm:mb-40 shadow-lg flex flex-col md:flex-row overflow-hidden">
-              <div className="md:w-1/3 flex items-center justify-center p-4 sm:p-6">
-                <img src="/Modern kitchen refit.png" alt="Modern kitchen refit" className="rounded-xl w-full max-w-xs sm:max-w-sm md:max-w-full h-auto object-cover" />
-              </div>
-              <div className="md:w-2/3 p-4 sm:p-8 flex flex-col justify-center">
-                <h3 className="text-lg sm:text-2xl font-bold mb-1 sm:mb-2">Modern kitchen refit</h3>
-                <p className="mb-2 sm:mb-4 text-base sm:text-xl">This kitchen transformation brought sleek, modern design and enhanced  functionality to our client’s home. We installed custom cabinetry, high-quality worktops, and state-of-the-art appliances, creating a stylish yet practical space perfect for cooking and entertaining. With attention to every detail, we delivered a kitchen that balances aesthetics and usability.</p>
-                <div className="flex gap-2 mb-2 sm:mb-4">
-                  <span className="bg-[#23232a] text-white text-xs px-3 py-1 rounded-full">Kitchen</span>
-                  <span className="bg-[#23232a] text-white text-xs px-3 py-1 rounded-full">Wooden</span>
+          {/* Mobile carousel */}
+          <div className="sm:hidden relative overflow-hidden">
+            <OurWorkCarousel />
+          </div>
+
+          {/* Desktop grid */}
+          <div className="hidden sm:block">
+            <div className="space-y-10 sm:space-y-16">
+              <div className="bg-[#e9ecf2] text-[#101014] rounded-2xl mb-20 sm:mb-40 shadow-lg flex flex-col md:flex-row overflow-hidden">
+                <div className="md:w-1/3 flex items-center justify-center p-4 sm:p-6">
+                  <img src="/Modern kitchen refit.png" alt="Modern kitchen refit" className="rounded-xl w-full max-w-xs sm:max-w-sm md:max-w-full h-auto object-cover" />
                 </div>
-                <div className="flex items-start gap-2 sm:gap-4">
-                  <span className="text-2xl">“</span>
-                  <div>
-                    <p className="mb-2 text-base font-medium text-xl">LifetimeArt completely transformed our kitchen, making it both beautiful and highly functional. The craftsmanship was outstanding, and the team was professional and communicative throughout. We couldn't be happier with the result!</p>
-                    <div className="flex items-center gap-2 mt-2">
-                      <img src="/Rachel Morgan.png" alt="Rachel Morgan" className="w-8 h-8 rounded-full object-cover" />
-                      <span className="text-sm font-semibold">Rachel Morgan</span>
+                <div className="md:w-2/3 p-4 sm:p-8 flex flex-col justify-center">
+                  <h3 className="text-base sm:text-2xl font-bold mb-1 sm:mb-2">Modern kitchen refit</h3>
+                  <p className="mb-2 sm:mb-4 text-xs sm:text-xl">This kitchen transformation brought sleek, modern design and enhanced  functionality to our client’s home. We installed custom cabinetry, high-quality worktops, and state-of-the-art appliances, creating a stylish yet practical space perfect for cooking and entertaining. With attention to every detail, we delivered a kitchen that balances aesthetics and usability.</p>
+                  <div className="flex gap-2 mb-2 sm:mb-4">
+                    <span className="bg-[#23232a] text-white text-xs px-3 py-1 rounded-full">Kitchen</span>
+                    <span className="bg-[#23232a] text-white text-xs px-3 py-1 rounded-full">Wooden</span>
+                  </div>
+                  <div className="flex items-start gap-2 sm:gap-4">
+                    <span className="text-2xl">“</span>
+                    <div>
+                      <p className="mb-2 text-xs sm:text-base font-medium sm:text-xl">LifetimeArt completely transformed our kitchen, making it both beautiful and highly functional. The craftsmanship was outstanding, and the team was professional and communicative throughout. We couldn't be happier with the result!</p>
+                      <div className="flex items-center gap-2 mt-2">
+                        <img src="/Rachel Morgan.png" alt="Rachel Morgan" className="w-8 h-8 rounded-full object-cover" />
+                        <span className="text-sm font-semibold">Rachel Morgan</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div className="bg-[#23232a] text-white rounded-2xl my-20 sm:my-40 shadow-lg flex flex-col md:flex-row overflow-hidden">
-              <div className="md:w-1/3 flex items-center justify-center p-4 sm:p-6">
-                <img src="/External garden path build.png" alt="External garden path build" className="rounded-xl w-full max-w-xs sm:max-w-sm md:max-w-full h-auto object-cover" />
-              </div>
-              <div className="md:w-2/3 p-4 sm:p-8 flex flex-col justify-center">
-                <h3 className="text-lg sm:text-2xl font-bold mb-1 sm:mb-2">External garden path build</h3>
-                <p className="mb-2 sm:mb-4 text-base sm:text-xl">Our team designed and built a durable, visually appealing garden path to enhance the outdoor space. Using premium materials, we created a seamless walkway that blends naturally with the landscape, providing both functionality and aesthetic charm. The result is a stylish, well-crafted path
-                  that elevates the overall garden design.</p>
-                <div className="flex gap-2 mb-2 sm:mb-4">
-                  <span className="bg-[#101014] text-white text-xs px-3 py-1 rounded-full">External Works</span>
-                  <span className="bg-[#101014] text-white text-xs px-3 py-1 rounded-full">Walkway</span>
+              <div className="bg-[#23232a] text-white rounded-2xl my-20 sm:my-40 shadow-lg flex flex-col md:flex-row overflow-hidden">
+                <div className="md:w-1/3 flex items-center justify-center p-4 sm:p-6">
+                  <img src="/External garden path build.png" alt="External garden path build" className="rounded-xl w-full max-w-xs sm:max-w-sm md:max-w-full h-auto object-cover" />
                 </div>
-                <div className="flex items-start gap-2 sm:gap-4">
-                  <span className="text-2xl">“</span>
-                  <div>
-                    <p className="mb-2 text-base font-medium text-xl">The team at LifetimeArt did an amazing job on our garden path. It's sturdy, looks fantastic, and has completely transformed our outdoor space. They listened to our vision and delivered exactly what we wanted - highly recommended!</p>
-                    <div className="flex items-center gap-2 mt-2">
-                      <img src="/Michael Turner.png" alt="Michael Turner" className="w-8 h-8 rounded-full object-cover" />
-                      <span className="text-sm font-semibold">Michael Turner</span>
+                <div className="md:w-2/3 p-4 sm:p-8 flex flex-col justify-center">
+                  <h3 className="text-base sm:text-2xl font-bold mb-1 sm:mb-2">External garden path build</h3>
+                  <p className="mb-2 sm:mb-4 text-xs sm:text-xl">Our team designed and built a durable, visually appealing garden path to enhance the outdoor space. Using premium materials, we created a seamless walkway that blends naturally with the landscape, providing both functionality and aesthetic charm. The result is a stylish, well-crafted path that elevates the overall garden design.</p>
+                  <div className="flex gap-2 mb-2 sm:mb-4">
+                    <span className="bg-[#101014] text-white text-xs px-3 py-1 rounded-full">External Works</span>
+                    <span className="bg-[#101014] text-white text-xs px-3 py-1 rounded-full">Walkway</span>
+                  </div>
+                  <div className="flex items-start gap-2 sm:gap-4">
+                    <span className="text-2xl">“</span>
+                    <div>
+                      <p className="mb-2 text-xs sm:text-base font-medium sm:text-xl">The team at LifetimeArt did an amazing job on our garden path. It's sturdy, looks fantastic, and has completely transformed our outdoor space. They listened to our vision and delivered exactly what we wanted - highly recommended!</p>
+                      <div className="flex items-center gap-2 mt-2">
+                        <img src="/Michael Turner.png" alt="Michael Turner" className="w-8 h-8 rounded-full object-cover" />
+                        <span className="text-sm font-semibold">Michael Turner</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div className="bg-[#e9ecf2] text-[#101014] rounded-2xl my-20 sm:my-40 shadow-lg flex flex-col md:flex-row overflow-hidden">
-              <div className="md:w-1/3 flex items-center justify-center p-4 sm:p-6">
-                <img src="/Bathroom renovation.png" alt="Bathroom renovation" className="rounded-xl w-full max-w-xs sm:max-w-sm md:max-w-full h-auto object-cover" />
-              </div>
-              <div className="md:w-2/3 p-4 sm:p-8 flex flex-col justify-center">
-                <h3 className="text-lg sm:text-2xl font-bold mb-1 sm:mb-2">Bathroom renovation</h3>
-                <p className="mb-2 sm:mb-4 text-base sm:text-xl">We revitalized this bathroom with a fresh, modern design, incorporating high-end tiling, sleek fixtures, and efficient lighting. The layout was optimized to maximize space, creating a luxurious and relaxing atmosphere. The final result is a beautifully crafted bathroom that enhances both
-                  comfort and functionality.</p>
-                <div className="flex gap-2 mb-2 sm:mb-4">
-                  <span className="bg-[#23232a] text-white text-xs px-3 py-1 rounded-full">Kitchen</span>
-                  <span className="bg-[#23232a] text-white text-xs px-3 py-1 rounded-full">Wooden</span>
+              <div className="bg-[#e9ecf2] text-[#101014] rounded-2xl my-20 sm:my-40 shadow-lg flex flex-col md:flex-row overflow-hidden">
+                <div className="md:w-1/3 flex items-center justify-center p-4 sm:p-6">
+                  <img src="/Bathroom renovation.png" alt="Bathroom renovation" className="rounded-xl w-full max-w-xs sm:max-w-sm md:max-w-full h-auto object-cover" />
                 </div>
-                <div className="flex items-start gap-2 sm:gap-4">
-                  <span className="text-2xl">“</span>
-                  <div>
-                    <p className="mb-2 text-base font-medium text-xl">LifetimeArt completely transformed our kitchen, making it both beautiful and highly functional. The craftsmanship was outstanding, and the team was professional and communicative throughout. We couldn't be happier with the result!</p>
-                    <div className="flex items-center gap-2 mt-2">
-                      <img src="/Laura Davies.png" alt="Laura Davies" className="w-8 h-8 rounded-full object-cover" />
-                      <span className="text-sm font-semibold">Laura Davies</span>
+                <div className="md:w-2/3 p-4 sm:p-8 flex flex-col justify-center">
+                  <h3 className="text-base sm:text-2xl font-bold mb-1 sm:mb-2">Bathroom renovation</h3>
+                  <p className="mb-2 sm:mb-4 text-xs sm:text-xl">We revitalized this bathroom with a fresh, modern design, incorporating high-end tiling, sleek fixtures, and efficient lighting. The layout was optimized to maximize space, creating a luxurious and relaxing atmosphere. The final result is a beautifully crafted bathroom that enhances both comfort and functionality.</p>
+                  <div className="flex gap-2 mb-2 sm:mb-4">
+                    <span className="bg-[#23232a] text-white text-xs px-3 py-1 rounded-full">Kitchen</span>
+                    <span className="bg-[#23232a] text-white text-xs px-3 py-1 rounded-full">Wooden</span>
+                  </div>
+                  <div className="flex items-start gap-2 sm:gap-4">
+                    <span className="text-2xl">“</span>
+                    <div>
+                      <p className="mb-2 text-xs sm:text-base font-medium sm:text-xl">LifetimeArt completely transformed our kitchen, making it both beautiful and highly functional. The craftsmanship was outstanding, and the team was professional and communicative throughout. We couldn't be happier with the result!</p>
+                      <div className="flex items-center gap-2 mt-2">
+                        <img src="/Laura Davies.png" alt="Laura Davies" className="w-8 h-8 rounded-full object-cover" />
+                        <span className="text-sm font-semibold">Laura Davies</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -597,63 +628,106 @@ function ServiceImage({ image }: { image: string }) {
 }
 
 function TestimonialsCarousel({ testimonials }: { testimonials: { text: string, name: string, img: string }[] }) {
-  const rowCount = 2;
-  const cardsPerRow = 5;
-  const row1 = [...testimonials, ...testimonials.slice(0, cardsPerRow)];
-  const row2 = [...testimonials.slice().reverse(), ...testimonials.slice(-cardsPerRow).reverse()];
+  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [touchStart, setTouchStart] = React.useState(0);
+  const [touchEnd, setTouchEnd] = React.useState(0);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 75) {
+      // Swipe left
+      setActiveIndex((current) =>
+        current === testimonials.length - 1 ? 0 : current + 1
+      );
+    }
+
+    if (touchStart - touchEnd < -75) {
+      // Swipe right
+      setActiveIndex((current) =>
+        current === 0 ? testimonials.length - 1 : current - 1
+      );
+    }
+  };
+
+  // Auto-scroll for desktop
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((current) => (current + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [testimonials.length]);
 
   return (
     <div className="space-y-8">
-      {[row1, row2].map((row, rowIdx) => (
+      {/* Desktop View */}
+      <div className="hidden md:grid grid-cols-3 gap-6">
+        {testimonials.slice(activeIndex, activeIndex + 3).map((testimonial, idx) => (
+          <Card key={idx} className="bg-white shadow-lg transform transition-all duration-300 hover:scale-105">
+            <CardContent className="p-6">
+              <div className="flex mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <p className="text-[#3d3d47] mb-4 line-clamp-4">{testimonial.text}</p>
+              <div className="flex items-center gap-3 mt-auto">
+                <img src={testimonial.img} alt={testimonial.name} className="w-10 h-10 rounded-full object-cover" />
+                <span className="font-medium text-[#23232a]">{testimonial.name}</span>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      {/* Mobile View */}
+      <div
+        className="md:hidden relative overflow-hidden touch-pan-y"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <div
-          key={rowIdx}
-          className="overflow-x-hidden w-full"
-          style={{ maskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)' }}
+          className="flex transition-transform duration-300 ease-in-out"
+          style={{ transform: `translateX(-${activeIndex * 100}%)` }}
         >
-          <div
-            className={`flex gap-6 animate-carousel-row${rowIdx + 1}`}
-            style={{ minWidth: `${(row.length) * 260}px` }}
-          >
-            {row.map((t, i) => (
-              <div
-                key={i}
-                className="bg-white rounded-xl shadow p-6 flex flex-col justify-between h-full min-w-[250px] max-w-[250px]"
-              >
-                <div>
+          {testimonials.map((testimonial, idx) => (
+            <div key={idx} className="w-full flex-shrink-0 px-4">
+              <Card className="bg-white shadow-lg">
+                <CardContent className="p-6">
                   <div className="flex mb-4">
                     {[...Array(5)].map((_, i) => (
-                      <span key={i} className="w-5 h-5 text-black">★</span>
+                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <p className="text-[#3d3d47] mb-4 text-sm">{t.text}</p>
-                </div>
-                <div className="flex items-center gap-3 mt-4">
-                  <img src={t.img} alt={t.name} className="w-10 h-10 rounded-full object-cover" />
-                  <div>
-                    <div className="font-semibold text-[#101014] text-sm">{t.name}</div>
+                  <p className="text-[#3d3d47] mb-4">{testimonial.text}</p>
+                  <div className="flex items-center gap-3">
+                    <img src={testimonial.img} alt={testimonial.name} className="w-10 h-10 rounded-full object-cover" />
+                    <span className="font-medium text-[#23232a]">{testimonial.name}</span>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
+                </CardContent>
+              </Card>
+            </div>
+          ))}
         </div>
-      ))}
-      <style jsx>{`
-        @keyframes carousel-row1 {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        @keyframes carousel-row2 {
-          0% { transform: translateX(-50%); }
-          100% { transform: translateX(0); }
-        }
-        .animate-carousel-row1 {
-          animation: carousel-row1 40s linear infinite;
-        }
-        .animate-carousel-row2 {
-          animation: carousel-row2 40s linear infinite;
-        }
-      `}</style>
+        <div className="flex justify-center gap-2 mt-4">
+          {testimonials.map((_, idx) => (
+            <button
+              key={idx}
+              className={`w-2 h-2 rounded-full transition-colors ${idx === activeIndex ? 'bg-[#23232a]' : 'bg-[#e5e5e5]'
+                }`}
+              onClick={() => setActiveIndex(idx)}
+              aria-label={`Go to testimonial ${idx + 1}`}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
@@ -688,6 +762,103 @@ function FAQsAccordion({ faqs }: { faqs: { q: string, a: string }[] }) {
           </div>
         );
       })}
+    </div>
+  );
+}
+
+function OurWorkCarousel() {
+  const works = [
+    {
+      image: "/Modern kitchen refit.png",
+      title: "Modern kitchen refit",
+      desc: "This kitchen transformation brought sleek, modern design and enhanced functionality to our client’s home. We installed custom cabinetry, high-quality worktops, and state-of-the-art appliances, creating a stylish yet practical space perfect for cooking and entertaining. With attention to every detail, we delivered a kitchen that balances aesthetics and usability.",
+      tags: ["Kitchen", "Wooden"],
+      testimonial: {
+        text: "LifetimeArt completely transformed our kitchen, making it both beautiful and highly functional. The craftsmanship was outstanding, and the team was professional and communicative throughout. We couldn't be happier with the result!",
+        name: "Rachel Morgan",
+        img: "/Rachel Morgan.png"
+      }
+    },
+    {
+      image: "/External garden path build.png",
+      title: "External garden path build",
+      desc: "Our team designed and built a durable, visually appealing garden path to enhance the outdoor space. Using premium materials, we created a seamless walkway that blends naturally with the landscape, providing both functionality and aesthetic charm. The result is a stylish, well-crafted path that elevates the overall garden design.",
+      tags: ["External Works", "Walkway"],
+      testimonial: {
+        text: "The team at LifetimeArt did an amazing job on our garden path. It's sturdy, looks fantastic, and has completely transformed our outdoor space. They listened to our vision and delivered exactly what we wanted - highly recommended!",
+        name: "Michael Turner",
+        img: "/Michael Turner.png"
+      }
+    },
+    {
+      image: "/Bathroom renovation.png",
+      title: "Bathroom renovation",
+      desc: "We revitalized this bathroom with a fresh, modern design, incorporating high-end tiling, sleek fixtures, and efficient lighting. The layout was optimized to maximize space, creating a luxurious and relaxing atmosphere. The final result is a beautifully crafted bathroom that enhances both comfort and functionality.",
+      tags: ["Kitchen", "Wooden"],
+      testimonial: {
+        text: "LifetimeArt completely transformed our kitchen, making it both beautiful and highly functional. The craftsmanship was outstanding, and the team was professional and communicative throughout. We couldn't be happier with the result!",
+        name: "Laura Davies",
+        img: "/Laura Davies.png"
+      }
+    }
+  ];
+  const [active, setActive] = React.useState(0);
+  const [touchStart, setTouchStart] = React.useState(0);
+  const [touchEnd, setTouchEnd] = React.useState(0);
+
+  const handleTouchStart = (e: React.TouchEvent) => setTouchStart(e.targetTouches[0].clientX);
+  const handleTouchMove = (e: React.TouchEvent) => setTouchEnd(e.targetTouches[0].clientX);
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 50) setActive((a) => (a + 1) % works.length);
+    if (touchStart - touchEnd < -50) setActive((a) => (a - 1 + works.length) % works.length);
+  };
+
+  return (
+    <div className="relative w-full">
+      <div
+        className="flex transition-transform duration-300 ease-in-out"
+        style={{ transform: `translateX(-${active * 100}%)` }}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        {works.map((work, idx) => (
+          <div key={idx} className="w-full flex-shrink-0 px-2">
+            <div className={`rounded-2xl shadow-lg bg-white text-[#101014] flex flex-col overflow-hidden`}>
+              <img src={work.image} alt={work.title} className="w-full h-48 object-cover rounded-t-2xl" />
+              <div className="p-4 flex flex-col gap-2">
+                <h3 className="text-lg font-bold mb-1">{work.title}</h3>
+                <p className="text-xs mb-2">{work.desc}</p>
+                <div className="flex gap-2 mb-2">
+                  {work.tags.map((tag) => (
+                    <span key={tag} className="bg-[#23232a] text-white text-xs px-3 py-1 rounded-full">{tag}</span>
+                  ))}
+                </div>
+                <div className="flex items-start gap-2 mt-2">
+                  <span className="text-2xl">“</span>
+                  <div>
+                    <p className="mb-2 text-xs font-medium">{work.testimonial.text}</p>
+                    <div className="flex items-center gap-2 mt-2">
+                      <img src={work.testimonial.img} alt={work.testimonial.name} className="w-8 h-8 rounded-full object-cover" />
+                      <span className="text-sm font-semibold">{work.testimonial.name}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="flex justify-center gap-2 mt-4">
+        {works.map((_, idx) => (
+          <button
+            key={idx}
+            className={`w-2 h-2 rounded-full transition-colors ${idx === active ? 'bg-[#23232a]' : 'bg-[#e5e5e5]'}`}
+            onClick={() => setActive(idx)}
+            aria-label={`Go to work ${idx + 1}`}
+          />
+        ))}
+      </div>
     </div>
   );
 }
